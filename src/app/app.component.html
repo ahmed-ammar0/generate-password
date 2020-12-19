@@ -1,0 +1,40 @@
+<h1>Generate Password</h1>
+
+<div>
+  <label for="">Length</label>
+  <input
+    type="text"
+    (input)="onChangeLength($event.target.value)"
+    name=""
+    id=""
+  />
+</div>
+
+<div>
+  <input type="checkbox" (change)="checkUseLetters()" name="" id="letters" />
+  <label for="letters">Use letters</label>
+</div>
+
+<div>
+  <input type="checkbox" (change)="checkUseNumbers()" name="" id="numbers" />
+  <label for="numbers">Use numbers</label>
+</div>
+
+<div>
+  <input type="checkbox" (change)="checkUseSymbols()" name="" id="symbols" />
+  <label for="symbols">Use symbols</label>
+</div>
+
+<div>
+  <button
+    [disabled]="!(passwordLength && (useLetters || useNumbers || useSymbols))"
+    (click)="clickOnButton()"
+  >
+    Generate!
+  </button>
+</div>
+
+<div *ngIf="password">
+  <label for="">Your password</label>
+  <input type="text" name="" id="password" readonly [value]="password" />
+</div>
